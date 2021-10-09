@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 
-const run = async () => {
+const crawl = async () => {
   try {
     const browser = await puppeteer.launch({
       headless: false,
@@ -12,13 +12,13 @@ const run = async () => {
         getData: function getData(){
             let data = [];
             let year = document.querySelectorAll(`#contents > div.academic_calendar > ul > li`);
-            for(let i = 0; i < list.length; i++){
+            for(let i = 0; i < year.length; i++){
                 let monthData = [];
                 let month = year[i].querySelectorAll("div:nth-child(2) > div:nth-child(1) > ul > li");
                 for(let j = 0; j < month.length; j++){
                     let date = month[j].querySelector("span").textContent;
                     let content = month[j].textContent;
-                    content = content.slice(date.length, content.length - 1);
+                    content = content.slice(date.length, content.length);
                     date = date.slice(1, date.length - 1);
                     monthData.push([date, content]);
                 }
@@ -28,9 +28,11 @@ const run = async () => {
         }
         return getData();
     })
+    console.log(data);
+
   } catch (e) {
     console.log(e);
   }
 };
 
-run();
+crawl();
