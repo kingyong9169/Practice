@@ -16,8 +16,8 @@ const crawl = async () => {
                 let date = content[i].querySelector("span").textContent;
                 let text = content[i].textContent;
                 text = text.slice(date.length, text.length);
-                date = date.replace(/[^0-9.]/g, "").replace(/\.{2,}/g, ".");
-                date = date.slice(0, date.length - 1).split('.');
+                date = date.replace(/[^0-9]/g, ".").replace(/\.{2,}/g, ".");
+                date = date.slice(1, date.length - 1).split('.');
                 data.push({...stringToDate(date), content: text});
             }
             console.log(data)
