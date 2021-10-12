@@ -20,7 +20,7 @@ const crawl = async () => {
                 date = date.slice(1, date.length - 1).split('.');
                 data.push({...stringToDate(date), content: text});
             }
-            console.log(data)
+            console.log(data);
         }
         stringToDate: function stringToDate(arr){
           const validDate = (i) => { return arr[i].length === 1 ? 0 + arr[i] : arr[i] }
@@ -57,8 +57,6 @@ const crawl = async () => {
         }
         return getData();
     })
-    console.log(data);
-
   } catch (e) {
     console.log(e);
   }
