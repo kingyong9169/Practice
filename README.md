@@ -10,3 +10,4 @@
 - CMI-schedule-scraper
 - nextjs-movies-app
 - react-test-simple-app
+- react-test-order-app
